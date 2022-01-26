@@ -1,6 +1,7 @@
 packages:
-  - "config/*"
-  - "gateway"
-  - "infra"
-  - "services/*"
-  - "packages/*"
+  - 'config/*'
+  - 'gateway'
+  - 'infra'
+  - 'services/*'
+  - 'packages/*'
+  - 'entrypoints/*'

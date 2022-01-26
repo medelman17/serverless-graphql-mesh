@@ -1,8 +1,8 @@
 {
-  "name": "gateway",
+  "name": "router",
   "version": "0.1.0",
   "bin": {
-    "gateway": "bin/gateway.js"
+    "gateway": "bin/router.js"
   },
   "scripts": {
     "build": "tsc",
@@ -10,7 +10,7 @@
     "test": "jest",
     "cdk": "cdk",
     "service": "./scripts/build.sh",
-    "deploy": "NODE_ENV=production cdk synth && cdk deploy --outputs-file ../../config/customers_service-outputs.json"
+    "deploy": "NODE_ENV=production cdk synth && cdk deploy --outputs-file ../../config/router_entrypoint-outputs.json"
   },
   "devDependencies": {
     "@types/jest": "^26.0.10",

@@ -4,14 +4,13 @@ import { aws_lambda as lambda, aws_iam as iam } from 'aws-cdk-lib'
 import { HttpLambdaIntegration } from '@aws-cdk/aws-apigatewayv2-integrations-alpha'
 import * as apigwv2 from '@aws-cdk/aws-apigatewayv2-alpha'
 
-
-export class GatewayStack extends Stack {
+export class RouterStack extends Stack {
   api: apigwv2.HttpApi
   handler: lambda.Function
   domain: apigwv2.IDomainName
 
   constructor(scope: Construct, id: string, props?: StackProps) {
-    super(scope, id, props);
+    super(scope, id, props)
 
     const lambda_role = new iam.Role(this, 'LambdaHandlerRole', {
       assumedBy: new iam.ServicePrincipal('lambda.amazonaws.com'),
@@ -41,13 +40,11 @@ export class GatewayStack extends Stack {
     })
 
     this.api = new apigwv2.HttpApi(this, 'NewHttpApi', {
-      defaultIntegration: new HttpLambdaIntegration('Reviews', this.handler),
+      defaultIntegration: new HttpLambdaIntegration('Router', this.handler),
       defaultDomainMapping: {
         domainName: this.domain,
-        mappingKey: 'graph',
+        mappingKey: 'router',
       },
     })
-
-
   }
 }
