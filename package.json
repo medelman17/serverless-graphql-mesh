@@ -1,0 +1,21 @@
+{
+    "name": "ocrateris-monorepo",
+    "private": true,
+    "turbo": {
+        "baseBranch": "origin/main",
+        "pipeline": {
+            "service": {
+                "dependsOn": [
+                    "^service"
+                ]
+            },
+            "deploy": {
+                "dependsOn": ["service"]
+            }
+        }
+    },
+    "devDependencies": {
+        "prettier": "^2.5.1",
+        "turbo": "^1.0.28"
+    }
+}
