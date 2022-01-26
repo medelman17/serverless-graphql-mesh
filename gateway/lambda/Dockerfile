@@ -9,10 +9,10 @@ ARG user=graphql
 
 RUN rustup target add $target
 
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && \
+    apt-get install -y \
     musl-tools \
-    musl-dev \
-    libssl-dev
+    musl-dev
 
 RUN update-ca-certificates
 
@@ -33,6 +33,12 @@ RUN adduser \
     --no-create-home \
     --uid "${UID}" \
     "${USER}"
+
+# install aarch64-unknown-linux-musl-cross
+RUN wget https://musl.cc/aarch64-linux-musl-cross.tgz && \
+    tar -xvf aarch64-linux-musl-cross.tgz
+
+ENV PATH=/aarch64-linux-musl-cross/bin:$PATH
 
 WORKDIR /app
 

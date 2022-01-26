@@ -6,8 +6,8 @@ version = "0.1.0"
 [dependencies]
 anyhow = "1.0.53"
 apollo-router = { git = "https://github.com/apollographql/router", default-features = false }
-axum = {version = "0.4.4", features = ["headers"]}
-structopt = {version = "0.3.26", default-features = false}
+axum = { version = "0.4.4", features = ["headers"] }
+structopt = { version = "0.3.26", default-features = false }
 lambda-web = { version = "0.1.8", features = ["hyper"] }
 #tracing = "0.1"
 #tracing-subscriber = { version = "0.3.7", features = ["fmt", "json", "env-filter"] }
@@ -20,6 +20,8 @@ directories = "4.0.1"
 futures = "0.3.19"
 #opentelemetry = "0.17.0"
 #opentelemetry-otlp = "0.10.0"
+[target.'cfg(target_arch = "aarch64")'.dependencies]
+openssl-sys = { version = "0.9", features = ["vendored"] }
 
 
 #[patch.crates-io]
