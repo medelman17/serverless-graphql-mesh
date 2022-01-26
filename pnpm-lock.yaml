@@ -93,6 +93,8 @@ importers:
 
   services/customers:
     specifiers:
+      '@aws-cdk/aws-apigatewayv2-alpha': ^2.8.0-alpha.0
+      '@aws-cdk/aws-apigatewayv2-integrations-alpha': ^2.8.0-alpha.0
       '@types/jest': ^26.0.10
       '@types/node': 10.17.27
       aws-cdk: 2.8.0
@@ -104,6 +106,8 @@ importers:
       ts-node: ^9.0.0
       typescript: ~3.9.7
     dependencies:
+      '@aws-cdk/aws-apigatewayv2-alpha': 2.8.0-alpha.0_c29e1d62ae7f9a566f8d92f112cc0707
+      '@aws-cdk/aws-apigatewayv2-integrations-alpha': 2.8.0-alpha.0_51c58e6bab09f08aabd0586ea039adf1
       aws-cdk-lib: 2.8.0_constructs@10.0.44
       constructs: 10.0.44
       source-map-support: 0.5.21

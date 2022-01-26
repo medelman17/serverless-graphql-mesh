@@ -3,5 +3,5 @@
   "region": "us-west-2",
   "apex_hosted_zone_id": "Z08441732R95GJ1PISAVG",
   "apex_hosted_zone_name": "ocrateris.cloud",
-  "certificate_arn": "arn:aws:acm:us-east-1:661099804654:certificate/628e155d-af88-4a6d-973d-870ce8b799c9"
+  "certificate_arn": "arn:aws:acm:us-west-2:661099804654:certificate/af84cf79-5e09-4696-ae3c-eea87fb65e22"
 }

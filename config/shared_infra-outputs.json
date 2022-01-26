@@ -1,10 +1,10 @@
 {
   "InfraStack": {
     "ApiGatewayRestApiId": "tb13vkh9pa",
-    "GraphDomainHostedZoneName": "graph.ocrateris.cloud",
+    "GraphDomainHostedZoneName": "mesh.ocrateris.cloud",
     "RestApiEndpoint0551178A": "https://tb13vkh9pa.execute-api.us-west-2.amazonaws.com/prod/",
-    "GraphDomainHostedZoneArn": "arn:aws:route53:::hostedzone/Z08231163AVGVYDHHQOKQ",
-    "GraphDomainHostedZoneId": "Z08231163AVGVYDHHQOKQ",
+    "GraphDomainHostedZoneArn": "arn:aws:route53:::hostedzone/Z075046619SAS734FKQKD",
+    "GraphDomainHostedZoneId": "Z075046619SAS734FKQKD",
     "ApiGatewayRestApiRootResourceId": "9mblj78dmh",
     "ApiGatewayRestApiName": "RestApi"
   }
