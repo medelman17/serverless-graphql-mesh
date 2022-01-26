@@ -3,3 +3,6 @@ target
 cdk.out
 .turbo
 *.log
+.env
+schemas
+*.zip

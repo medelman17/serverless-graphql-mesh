@@ -3,3 +3,4 @@ packages:
   - "gateway"
   - "infra"
   - "services/*"
+  - "packages/*"

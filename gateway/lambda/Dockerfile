@@ -11,7 +11,8 @@ RUN rustup target add $target
 
 RUN apt-get update && apt-get install -y \
     musl-tools \
-    musl-dev
+    musl-dev \
+    libssl-dev
 
 RUN update-ca-certificates
 
@@ -54,4 +55,3 @@ WORKDIR .
 COPY --from=builder "/app/target/$target/release/$binary" .
 
 USER $USER:$USER
-

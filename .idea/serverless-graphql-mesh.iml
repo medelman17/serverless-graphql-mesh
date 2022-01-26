@@ -4,6 +4,32 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/gateway/lambda/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/gateway/lambda/target" />
+      <excludeFolder url="file://$MODULE_DIR$/gateway/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/gateway/cdk.out" />
+      <excludeFolder url="file://$MODULE_DIR$/infra/cdk.out" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/http-api-lambda-rust/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/services/collections/lambda/target" />
+      <excludeFolder url="file://$MODULE_DIR$/services/collections/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/services/collections/assets" />
+      <excludeFolder url="file://$MODULE_DIR$/services/customers/lambda/target" />
+      <excludeFolder url="file://$MODULE_DIR$/services/customers/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/services/customers/assets" />
+      <excludeFolder url="file://$MODULE_DIR$/services/customers/cdk.out" />
+      <excludeFolder url="file://$MODULE_DIR$/services/orders/lambda/target" />
+      <excludeFolder url="file://$MODULE_DIR$/services/orders/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/services/orders/assets" />
+      <excludeFolder url="file://$MODULE_DIR$/services/products/lambda/target" />
+      <excludeFolder url="file://$MODULE_DIR$/services/products/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/services/products/assets" />
+      <excludeFolder url="file://$MODULE_DIR$/services/products/cdk.out" />
+      <excludeFolder url="file://$MODULE_DIR$/services/reviews/lambda/target" />
+      <excludeFolder url="file://$MODULE_DIR$/services/reviews/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/services/reviews/assets" />
+      <excludeFolder url="file://$MODULE_DIR$/services/reviews/cdk.out" />
+      <excludeFolder url="file://$MODULE_DIR$/services/wishlists/lambda/target" />
+      <excludeFolder url="file://$MODULE_DIR$/services/wishlists/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/services/wishlists/assets" />
+      <excludeFolder url="file://$MODULE_DIR$/schemas" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

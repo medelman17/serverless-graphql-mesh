@@ -26,10 +26,9 @@ export class CustomersStack extends Stack {
       code: lambda.AssetCode.fromAsset('./assets/lambda.zip'),
       runtime: lambda.Runtime.PROVIDED_AL2,
       handler: 'not.required',
-      tracing: lambda.Tracing.PASS_THROUGH,
+      tracing: lambda.Tracing.ACTIVE,
       architecture: lambda.Architecture.ARM_64,
       role: lambda_role,
-      insightsVersion: lambda.LambdaInsightsVersion.VERSION_1_0_119_0,
       environment: {},
     })
 

@@ -1,0 +1,13 @@
+subgraphs:
+  customers:
+    routing_url: https://mesh.ocrateris.cloud/service/customers
+    schema:
+      file: ../schemas/customers.schema.graphql
+  products:
+    routing_url: https://mesh.ocrateris.cloud/service/products
+    schema:
+      file: ../schemas/products.schema.graphql
+  reviews:
+    routing_url: https://mesh.ocrateris.cloud/service/reviews
+    schema:
+      file: ../schemas/reviews.schema.graphql

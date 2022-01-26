@@ -1,0 +1,15 @@
+
+[
+  {
+    "name": "customers",
+    "endpoint": "https://mesh.ocrateris.cloud/service/customers"
+  },
+  {
+    "name": "products",
+    "endpoint": "https://mesh.ocrateris.cloud/service/products"
+  },
+  {
+    "name": "reviews",
+    "endpoint": "https://mesh.ocrateris.cloud/service/reviews"
+  }
+]
