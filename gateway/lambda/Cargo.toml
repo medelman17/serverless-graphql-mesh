@@ -39,3 +39,6 @@ opt-level = 3
 [[bin]]
 name = "bootstrap"
 path = "src/main.rs"
+
+[lib]
+path = "src/lib.rs"
