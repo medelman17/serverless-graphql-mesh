@@ -47,12 +47,5 @@ export class ReviewsStack extends Stack {
       },
     })
 
-
-    // The code that defines your stack goes here
-
-    // example resource
-    // const queue = new sqs.Queue(this, 'CustomersQueue', {
-    //   visibilityTimeout: cdk.Duration.seconds(300)
-    // });
   }
 }
