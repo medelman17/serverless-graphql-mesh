@@ -1,11 +1,12 @@
 <div align="center">
     <h1>Serverless GraphQL Service Mesh</h1>
-    This repository provides a reference architecture for a serverless, graphql-based service mesh on Amazon Web Services (AWS).
+    [WIP] This repository provides a reference architecture for a serverless, graphql-based service mesh on Amazon Web Services (AWS).
     <p align="center">
         <a href="#Services">Services</a> •
         <a href="#about">About</a> •
         <a href="#installation">Installation</a> •
-        <a href="#installation">Resources</a> •
+        <a href="#resources">Resources</a> •
+        <a href="#roadmap">Roadmap</a> •
         <a href="#license">License</a>
     </p>
     <hr />
@@ -84,7 +85,9 @@ pnpx turbo run deploy
 - [**Docker BuildX**](https://docs.docker.com/buildx/working-with-buildx/) - Docker Buildx is a CLI plugin that extends the docker command with the full support of the features provided by Moby BuildKit builder toolkit. It provides the same user experience as docker build with many new features like creating scoped builder instances and building against multiple nodes concurrently.
 
 
+## Roadmap
 
+- [ ] Create Roadmap
 
 ## License
 
