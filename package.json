@@ -1,21 +1,36 @@
 {
-    "name": "ocrateris-monorepo",
-    "private": true,
-    "turbo": {
-        "baseBranch": "origin/main",
-        "pipeline": {
-            "service": {
-                "dependsOn": [
-                    "^service"
-                ]
-            },
-            "deploy": {
-                "dependsOn": ["service"]
-            }
-        }
-    },
-    "devDependencies": {
-        "prettier": "^2.5.1",
-        "turbo": "^1.0.28"
+  "name": "ocrateris-monorepo",
+  "private": true,
+  "scripts": {
+    "build": "turbo run build",
+    "build:entrypoints": "turbo run build --scope=@entrypoint/*",
+    "build:services": "turbo run build --scope=*@services*",
+    "build:shared-infra": "turbo run build --scope=*@infra/shared*",
+    "deploy": "turbo run deploy",
+    "deploy:entrypoints": "turbo run deploy --scope=*@entrypoints*",
+    "deploy:services": "turbo run deploy --scope=*@services*",
+    "deploy:shared-infra": "turbo run deploy --scope=*@infra/shared*"
+  },
+  "turbo": {
+    "baseBranch": "origin/main",
+    "pipeline": {
+      "build": {
+        "dependsOn": []
+      },
+      "service": {
+        "dependsOn": [
+          "^service"
+        ]
+      },
+      "deploy": {
+        "dependsOn": [
+          "service"
+        ]
+      }
     }
+  },
+  "devDependencies": {
+    "prettier": "^2.5.1",
+    "turbo": "^1.0.28"
+  }
 }

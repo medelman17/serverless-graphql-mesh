@@ -1,14 +1,23 @@
 {
-  "name": "router",
+  "name": "@entrypoint/router",
   "version": "0.1.0",
   "bin": {
     "gateway": "bin/router.js"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "pnpm run build:service",
+    "build:service": "./scripts/build-service.sh",
+    "build:infra": "",
+    "format": "tsc",
+    "format:service": "",
+    "format:infra": "",
+    "lint": "tsc",
+    "lint:service": "",
+    "lint:infra": "",
+    "test": "tsc",
+    "test:service": "",
+    "test:infra": "",
     "watch": "tsc -w",
-    "test": "jest",
-    "cdk": "cdk",
     "service": "./scripts/build.sh",
     "deploy": "NODE_ENV=production cdk synth && cdk deploy --outputs-file ../../config/router_entrypoint-outputs.json"
   },
