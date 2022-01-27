@@ -7,19 +7,18 @@
   "scripts": {
     "build": "pnpm run build:service",
     "build:service": "./scripts/build-service.sh",
-    "build:infra": "",
-    "format": "tsc",
+    "build:infra": "./scripts/build-infra.sh",
+    "format": "",
     "format:service": "",
     "format:infra": "",
-    "lint": "tsc",
+    "lint": "",
     "lint:service": "",
     "lint:infra": "",
-    "test": "tsc",
+    "test": "",
     "test:service": "",
     "test:infra": "",
     "watch": "tsc -w",
-    "service": "./scripts/build.sh",
-    "deploy": "NODE_ENV=production cdk synth && cdk deploy --outputs-file ../../config/router_entrypoint-outputs.json"
+    "deploy": "./scripts/deploy-service.sh"
   },
   "devDependencies": {
     "@types/jest": "^26.0.10",

@@ -60,7 +60,7 @@ Insert nifty bash one-liner, here.
 
 3. Build services and other accoutrement.
 ```bash
-pnpx turbo run service
+pnpm run build
 ```
 
 4. Deploy to the cloud. 

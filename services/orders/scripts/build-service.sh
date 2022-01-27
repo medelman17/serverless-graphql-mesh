@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-SERVICE_TARGET_ARCHITECTURE=${1:-aarch64-unknown-linux-gnu}
+SERVICE_TARGET_ARCHITECTURE=${1:-aarch64-unknown-linux-musl}
 
 PACKAGE_DIR="$PWD"
 SERVICE_DIR="$PACKAGE_DIR/lambda"
@@ -15,18 +15,18 @@ echo "[Building]"
 echo "[Building] -> Preparing Environment"
   export CC="$SERVICE_DIR/zcc"
   export CXX="$SERVICE_DIR/zxx"
-  export RUSTC_WRAPPER=/Users/michael/.cargo/bin/sccache
+  export RUSTC_WRAPPER="$HOME/.cargo/bin/sccache"
   CARGO_TRIPLE="$(echo ${SERVICE_TARGET_ARCHITECTURE^^} | tr '-' '_')"
   CARGO_LINKER="CARGO_TARGET_${CARGO_TRIPLE}_LINKER" && \
    printf -v $CARGO_LINKER "$SERVICE_TARGET_ARCHITECTURE-gcc" && \
    export $CARGO_LINKER
 
-echo "[Building] -> Architecture: $SERVICE_TARGET_ARCHITECTURE" && \
-  cargo build \
-    --manifest-path "$SERVICE_DIR/Cargo.toml" \
-    --target "$SERVICE_TARGET_ARCHITECTURE" \
-    --message-format short \
-    --release
+ echo "[Building] -> Architecture: $SERVICE_TARGET_ARCHITECTURE" && \
+   cargo build \
+     --manifest-path "$SERVICE_DIR/Cargo.toml" \
+     --target "$SERVICE_TARGET_ARCHITECTURE" \
+     --message-format short \
+     --release
 
 echo "[Packaging]"
 echo "[Packaging] -> Archiving Asset" && \
@@ -36,5 +36,5 @@ echo "[Packaging] -> Archiving Asset" && \
   cp "lambda.zip" "$ASSET_DIR"
 echo "[Packaging] -> File Size: $(stat -f%z "$ASSET_DIR/lambda.zip")"
 
-
+#
 

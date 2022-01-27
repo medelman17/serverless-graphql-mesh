@@ -4,8 +4,8 @@
   "scripts": {
     "build": "turbo run build",
     "build:entrypoints": "turbo run build --scope=@entrypoint/*",
-    "build:services": "turbo run build --scope=*@services*",
-    "build:shared-infra": "turbo run build --scope=*@infra/shared*",
+    "build:services": "turbo run build --scope=@service*",
+    "build:shared-infra": "turbo run build --scope=@infra/shared*",
     "deploy": "turbo run deploy",
     "deploy:entrypoints": "turbo run deploy --scope=*@entrypoints*",
     "deploy:services": "turbo run deploy --scope=*@services*",
@@ -15,21 +15,38 @@
     "baseBranch": "origin/main",
     "pipeline": {
       "build": {
-        "dependsOn": []
-      },
-      "service": {
+        "outputs": [
+          "**/target/**",
+          "assets/*"
+        ],
         "dependsOn": [
-          "^service"
+          "^build"
+        ]
+      },
+      "@service/*#deploy": {
+        "dependsOn": [
+          "@infra/shared#deploy"
+        ]
+      },
+      "@entrypoint/*#deploy": {
+        "dependsOn": [
+          "@infra/shared#deploy"
         ]
       },
       "deploy": {
         "dependsOn": [
-          "service"
+          "build"
         ]
+      },
+      "lint": {},
+      "test": {},
+      "watch": {
+        "cache": false
       }
     }
   },
   "devDependencies": {
+    "npm-run-all": "^4.1.5",
     "prettier": "^2.5.1",
     "turbo": "^1.0.28"
   }

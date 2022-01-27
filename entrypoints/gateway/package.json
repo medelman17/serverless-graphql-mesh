@@ -5,7 +5,9 @@
     "gateway": "bin/gateway.js"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "pnpm run build:service",
+    "build:service": "cdk synth",
+    "build:infra": "",
     "watch": "tsc -w",
     "test": "jest",
     "cdk": "cdk"
