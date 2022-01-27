@@ -6,8 +6,9 @@ version = "0.1.0"
 [dependencies]
 async-graphql = "3.0.25"
 async-graphql-axum = "3.0.25"
+async-graphql-extension-apollo-tracing = { version = "0.4.2" }
+openssl = { version = "0.10", features = ["vendored"] }
 axum = {version = "0.4.4", features = ["headers"]}
-structopt = {version = "0.3.26", default-features = false}
 lambda-web = { version = "0.1.8", features = ["hyper"] }
 tracing = "0.1"
 tracing-subscriber = { version = "0.3.5", features = ["fmt", "json", "env-filter"] }

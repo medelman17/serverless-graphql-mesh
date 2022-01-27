@@ -1,16 +1,24 @@
 {
-  "name": "customers",
+  "name": "@service/customers",
   "version": "0.1.0",
   "bin": {
     "customers": "bin/customers.js"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "pnpm run build:service",
+    "build:service": "./scripts/build-service.sh",
+    "build:infra": "./scripts/build-infra.sh",
+    "format": "",
+    "format:service": "",
+    "format:infra": "",
+    "lint": "",
+    "lint:service": "",
+    "lint:infra": "",
+    "test": "",
+    "test:service": "",
+    "test:infra": "",
     "watch": "tsc -w",
-    "test": "jest",
-    "cdk": "cdk",
-    "service": "./scripts/build.sh",
-    "deploy": "NODE_ENV=production cdk synth && cdk deploy --outputs-file ../../config/customers_service-outputs.json"
+    "deploy": "./scripts/deploy-service.sh"
   },
   "devDependencies": {
     "@types/jest": "^26.0.10",
