@@ -3,7 +3,9 @@
 set -o allexport; source .env; set +o allexport
 
 introspect() {
-  rover subgraph introspect ${1} &> "./schemas/$2.schema.graphql"
+  rover subgraph introspect ${1} | rover subgraph publish Ocrateris-Serverless-GraphQL@node-gateway \
+    --name ${2} --routing-url ${1} --schema -
+
 }
 
 rm -rf schemas

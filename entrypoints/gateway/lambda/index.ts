@@ -1,18 +1,11 @@
-import {
-  Handler,
-  APIGatewayProxyEventV2,
-  APIGatewayProxyResultV2,
-} from 'aws-lambda'
 
-type ProxyHandler = Handler<APIGatewayProxyEventV2, APIGatewayProxyResultV2>
+import {ApolloServer} from 'apollo-server-lambda'
+import {ApolloGateway} from '@apollo/gateway'
 
-export const handler: ProxyHandler = async (event, context) => {
-  const name = event.queryStringParameters?.name || 'world'
 
-  return {
-    statusCode: 201,
-    body: JSON.stringify({
-      message: `Hello ${name}`,
-    }),
-  }
-}
+const gateway = new ApolloGateway();
+
+const server = new ApolloServer({gateway});
+
+
+export const handler = server.createHandler();

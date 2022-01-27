@@ -11,7 +11,8 @@ RUN rustup target add $target
 
 RUN apt-get update && apt-get install -y \
     musl-tools \
-    musl-dev
+    musl-dev \
+    libssl-dev
 
 RUN update-ca-certificates
 
@@ -21,8 +22,6 @@ ENV USER=$user
 ENV UID=10001
 ENV TARGET=$target
 ENV BINARY=$binary
-
-ENV CROSS_DOCKER_IN_DOCKER=true
 
 RUN adduser \
     --disabled-password \
@@ -35,11 +34,15 @@ RUN adduser \
 
 WORKDIR /app
 
+RUN wget https://ziglang.org/download/0.9.0/zig-linux-aarch64-0.9.0.tar.xz
+RUN tar xvf zig-linux-aarch64-0.9.0.tar.xz
+
+ENV CC="/app/zcc"
+ENV CXX="/app/zxx"
+
 COPY ./ .
 
-RUN cross build --bin $binary \
-    --target $target \
-    --release
+RUN cargo build --target $target --release
 
 FROM scratch
 
@@ -54,4 +57,3 @@ WORKDIR .
 COPY --from=builder "/app/target/$target/release/$binary" .
 
 USER $USER:$USER
-

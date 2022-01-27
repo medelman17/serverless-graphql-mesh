@@ -1,6 +1,6 @@
 import { Stack, StackProps } from 'aws-cdk-lib'
 import { Construct } from 'constructs'
-import { aws_lambda_nodejs as lambda, aws_iam as iam } from 'aws-cdk-lib'
+import { aws_lambda_nodejs as lambda, aws_iam as iam, aws_secretsmanager as secrets } from 'aws-cdk-lib'
 import { HttpLambdaIntegration } from '@aws-cdk/aws-apigatewayv2-integrations-alpha'
 import * as apigwv2 from '@aws-cdk/aws-apigatewayv2-alpha'
 import { Tracing } from 'aws-cdk-lib/aws-lambda'
@@ -22,12 +22,22 @@ export class GatewayStack extends Stack {
       ),
     )
 
+    const apolloKeySecret = secrets.Secret.fromSecretNameV2(
+      this,
+      'apollo-key',
+      "apolloKey"
+    )
+
     this.handler = new lambda.NodejsFunction(this, 'Handler', {
-      handler: 'index.handler',
+      handler: 'handler',
       entry: './lambda/index.ts',
       role: lambda_role,
       tracing: Tracing.ACTIVE,
-      environment: {},
+      environment: {
+        APOLLO_GRAPH_REF: "Ocrateris-Serverless-GraphQL@node-gateway",
+        APOLLO_KEY: apolloKeySecret.secretValue.toString(),
+        APOLLO_OUT_OF_BAND_REPORTER_ENDPOINT: "https://outofbandreporter.api.apollographql.com"
+      },
     })
 
     this.domain = apigwv2.DomainName.fromDomainNameAttributes(this, 'DN', {
