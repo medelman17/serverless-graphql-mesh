@@ -1,0 +1,44 @@
+[package]
+edition = "2021"
+name = "lambda"
+version = "0.1.0"
+
+[dependencies]
+anyhow = "1.0"
+apollo-router = {git = "https://github.com/apollographql/router"}
+atty = "0.2.14"
+axum = {version = "0.4.4", features = ["headers"]}
+directories = "4.0.1"
+futures = "0.3.19"
+lambda-web = {version = "0.1.8", features = ["hyper"]}
+libc = "0.2.114"
+openssl = {version = "0.10.38", features = ["vendored"]}
+opentelemetry = "0.17.0"
+opentelemetry-otlp = "0.10.0"
+serde = {version = "1.0", features = ["derive"]}
+serde_json = "1"
+structopt = {version = "0.3"}
+tokio = {version = "1.15.0", features = ["full"]}
+tracing = "0.1"
+tracing-subscriber = {version = "0.3", features = ["fmt", "json", "env-filter"]}
+
+[patch.crates-io]
+opentelemetry = {git = "https://github.com/open-telemetry/opentelemetry-rust.git", rev = "6b3aa02aa"}
+opentelemetry-otlp = {git = "https://github.com/open-telemetry/opentelemetry-rust.git", rev = "6b3aa02aa"}
+
+[profile.release]
+codegen-units = 1
+incremental = false
+lto = "thin"
+opt-level = "z"
+panic = 'abort'
+
+[profile.dev]
+opt-level = 3
+
+[[bin]]
+name = "bootstrap"
+path = "src/main.rs"
+
+[lib]
+path = "src/lib.rs"
