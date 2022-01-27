@@ -14,13 +14,15 @@
 
 ## Services
 
-|  Service  |   Tech   |                    Endpoint                    |
-| :-------: | :------: | :--------------------------------------------: |
-| **Graph** | **Rust** |     **https://mesh.ocrateris.cloud/graph**     |
-|           |          |                                                |
-| Customers |   Rust   | https://mesh.ocrateris.cloud/service/customers |
-| Products  |   Rust   | https://mesh.ocrateris.cloud/service/products  |
-|  Reviews  |   Rust   |  https://mesh.ocrateris.cloud/service/reviews  |
+
+|   Service   |   Tech   |                     Endpoint                     |
+|:-----------:|:--------:|:------------------------------------------------:|
+| **Router**  | **Rust** |     **https://mesh.ocrateris.cloud/router**      |
+| **Gateway** | **Node** | **https://mesh.ocrateris.cloud/gateway/graphql** |
+|             |          |                                                  |
+|  Customers  |   Rust   |  https://mesh.ocrateris.cloud/service/customers  |
+|  Products   |   Rust   |  https://mesh.ocrateris.cloud/service/products   |
+|   Reviews   |   Rust   |   https://mesh.ocrateris.cloud/service/reviews   |
 
 ## About
 *...*

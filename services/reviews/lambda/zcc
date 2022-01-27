@@ -1,0 +1,2 @@
+#!/bin/sh
+/app/zig-linux-aarch64-0.9.0/zig cc -target aarch64-linux-musl $@

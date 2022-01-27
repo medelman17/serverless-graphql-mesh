@@ -6,3 +6,5 @@ cdk.out
 .env
 schemas
 *.zip
+
+**/target

@@ -1,17 +1,16 @@
 import { Stack, StackProps } from 'aws-cdk-lib'
 import { Construct } from 'constructs'
-import { aws_lambda as lambda, aws_iam as iam } from 'aws-cdk-lib'
+import { aws_lambda_nodejs as lambda, aws_iam as iam, aws_secretsmanager as secrets } from 'aws-cdk-lib'
 import { HttpLambdaIntegration } from '@aws-cdk/aws-apigatewayv2-integrations-alpha'
 import * as apigwv2 from '@aws-cdk/aws-apigatewayv2-alpha'
-
+import { Tracing } from 'aws-cdk-lib/aws-lambda'
 
 export class GatewayStack extends Stack {
   api: apigwv2.HttpApi
-  handler: lambda.Function
+  handler: lambda.NodejsFunction
   domain: apigwv2.IDomainName
-
   constructor(scope: Construct, id: string, props?: StackProps) {
-    super(scope, id, props);
+    super(scope, id, props)
 
     const lambda_role = new iam.Role(this, 'LambdaHandlerRole', {
       assumedBy: new iam.ServicePrincipal('lambda.amazonaws.com'),
@@ -23,15 +22,22 @@ export class GatewayStack extends Stack {
       ),
     )
 
-    this.handler = new lambda.Function(this, 'LambdaHandlerFunction', {
-      code: lambda.AssetCode.fromAsset('./assets/lambda.zip'),
-      runtime: lambda.Runtime.PROVIDED_AL2,
-      handler: 'not.required',
-      tracing: lambda.Tracing.PASS_THROUGH,
-      architecture: lambda.Architecture.ARM_64,
+    const apolloKeySecret = secrets.Secret.fromSecretNameV2(
+      this,
+      'apollo-key',
+      "apolloKey"
+    )
+
+    this.handler = new lambda.NodejsFunction(this, 'Handler', {
+      handler: 'handler',
+      entry: './lambda/index.ts',
       role: lambda_role,
-      insightsVersion: lambda.LambdaInsightsVersion.VERSION_1_0_119_0,
-      environment: {},
+      tracing: Tracing.ACTIVE,
+      environment: {
+        APOLLO_GRAPH_REF: "Ocrateris-Serverless-GraphQL@node-gateway",
+        APOLLO_KEY: apolloKeySecret.secretValue.toString(),
+        APOLLO_OUT_OF_BAND_REPORTER_ENDPOINT: "https://outofbandreporter.api.apollographql.com"
+      },
     })
 
     this.domain = apigwv2.DomainName.fromDomainNameAttributes(this, 'DN', {
@@ -41,13 +47,18 @@ export class GatewayStack extends Stack {
     })
 
     this.api = new apigwv2.HttpApi(this, 'NewHttpApi', {
-      defaultIntegration: new HttpLambdaIntegration('Reviews', this.handler),
+      defaultIntegration: new HttpLambdaIntegration('Gateway', this.handler),
       defaultDomainMapping: {
         domainName: this.domain,
-        mappingKey: 'graph',
+        mappingKey: 'gateway',
       },
     })
 
+    // The code that defines your stack goes here
 
+    // example resource
+    // const queue = new sqs.Queue(this, 'GatewayQueue', {
+    //   visibilityTimeout: cdk.Duration.seconds(300)
+    // });
   }
 }
