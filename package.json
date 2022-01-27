@@ -13,6 +13,7 @@
   },
   "turbo": {
     "baseBranch": "origin/main",
+    "npmClient": "pnpm",
     "pipeline": {
       "build": {
         "outputs": [
