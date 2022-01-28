@@ -82,50 +82,7 @@ version = "0.1.0-alpha.3"
 source = "git+https://github.com/apollographql/router?branch=main#2c1648010afd4be1343ec7e1d4bfb83b697f450f"
 dependencies = [
  "anyhow",
- "apollo-router-core 0.1.0-alpha.3 (git+https://github.com/apollographql/router?branch=main)",
- "async-trait",
- "atty",
- "bytes",
- "derivative",
- "derive_more",
- "directories",
- "displaydoc",
- "futures",
- "hotwatch",
- "hyper",
- "once_cell",
- "opentelemetry 0.16.0",
- "opentelemetry-jaeger",
- "opentelemetry-otlp 0.9.0",
- "reqwest",
- "reqwest-middleware",
- "reqwest-tracing",
- "serde",
- "serde_json",
- "serde_yaml",
- "structopt",
- "task-local-extensions",
- "thiserror",
- "tokio",
- "tonic 0.5.2",
- "tower",
- "tower-http",
- "tracing",
- "tracing-futures",
- "tracing-opentelemetry",
- "tracing-subscriber 0.3.7",
- "typed-builder",
- "url",
- "warp",
-]
-
-[[package]]
-name = "apollo-router"
-version = "0.1.0-alpha.3"
-source = "git+https://github.com/apollographql/router#9c0281eb82c74313ede6534538e29c247c96c6b2"
-dependencies = [
- "anyhow",
- "apollo-router-core 0.1.0-alpha.3 (git+https://github.com/apollographql/router)",
+ "apollo-router-core",
  "async-trait",
  "atty",
  "bytes",
@@ -190,37 +147,10 @@ dependencies = [
 ]
 
 [[package]]
-name = "apollo-router-core"
-version = "0.1.0-alpha.3"
-source = "git+https://github.com/apollographql/router#9c0281eb82c74313ede6534538e29c247c96c6b2"
-dependencies = [
- "apollo-parser",
- "async-trait",
- "atty",
- "bytes",
- "derivative",
- "displaydoc",
- "futures",
- "include_dir",
- "lru",
- "miette",
- "once_cell",
- "router-bridge",
- "serde",
- "serde_json",
- "serde_json_bytes",
- "thiserror",
- "tokio",
- "tracing",
- "tracing-futures",
- "typed-builder",
-]
-
-[[package]]
 name = "async-compression"
-version = "0.3.11"
+version = "0.3.12"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "795814bc6dce6c2e6af7e6aa5a96d99543c88808596300dbfb56372b4456f689"
+checksum = "f2bf394cfbbe876f0ac67b13b6ca819f9c9f2fb9ec67223cceb1555fbab1c31a"
 dependencies = [
  "brotli",
  "flate2",
@@ -278,52 +208,6 @@ name = "autocfg"
 version = "1.0.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "cdb031dd78e28731d87d56cc8ffef4a8f36ca26c38fe2de700543e627f8a464a"
-
-[[package]]
-name = "axum"
-version = "0.4.4"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "310a147401c66e79fc78636e4db63ac68cd6acb9ece056de806ea173a15bce32"
-dependencies = [
- "async-trait",
- "axum-core",
- "bitflags",
- "bytes",
- "futures-util",
- "headers",
- "http",
- "http-body",
- "hyper",
- "matchit",
- "memchr",
- "mime",
- "percent-encoding",
- "pin-project-lite",
- "serde",
- "serde_json",
- "serde_urlencoded",
- "sync_wrapper",
- "tokio",
- "tokio-util",
- "tower",
- "tower-http",
- "tower-layer",
- "tower-service",
-]
-
-[[package]]
-name = "axum-core"
-version = "0.1.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1ca6c0b218388a7ed6a8d25e94f7dea5498daaa4fd8c711fb3ff166041b06fda"
-dependencies = [
- "async-trait",
- "bytes",
- "futures-util",
- "http",
- "http-body",
- "mime",
-]
 
 [[package]]
 name = "backtrace"
@@ -1144,36 +1028,12 @@ dependencies = [
 ]
 
 [[package]]
-name = "lambda"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "apollo-router 0.1.0-alpha.3 (git+https://github.com/apollographql/router)",
- "atty",
- "axum",
- "directories",
- "futures",
- "lambda-router",
- "lambda-web",
- "libc",
- "openssl",
- "opentelemetry 0.17.0",
- "opentelemetry-otlp 0.10.0",
- "serde",
- "serde_json",
- "structopt",
- "tokio",
- "tracing",
- "tracing-subscriber 0.3.7",
-]
-
-[[package]]
 name = "lambda-router"
 version = "0.1.0"
 dependencies = [
  "anyhow",
- "apollo-router 0.1.0-alpha.3 (git+https://github.com/apollographql/router?branch=main)",
- "apollo-router-core 0.1.0-alpha.3 (git+https://github.com/apollographql/router?branch=main)",
+ "apollo-router",
+ "apollo-router-core",
  "bytes",
  "futures",
  "lambda_http",
@@ -1187,21 +1047,6 @@ dependencies = [
  "tracing",
  "tracing-subscriber 0.3.7",
  "url",
-]
-
-[[package]]
-name = "lambda-web"
-version = "0.1.8"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a486369acaf7c6c7680230ce2129331bb4c5baf8479b98f4f75b891da80fa232"
-dependencies = [
- "base64",
- "brotli",
- "hyper",
- "lambda_runtime",
- "percent-encoding",
- "serde",
- "serde_json",
 ]
 
 [[package]]
@@ -1252,9 +1097,9 @@ checksum = "830d08ce1d1d941e6b30645f1a0eb5643013d835ce3779a5fc208261dbe10f55"
 
 [[package]]
 name = "libc"
-version = "0.2.114"
+version = "0.2.115"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b0005d08a8f7b65fb8073cb697aa0b12b631ed251ce73d862ce50eeb52ce3b50"
+checksum = "0a8d982fa7a96a000f6ec4cfe966de9703eccde29750df2bb8949da91b0e818d"
 
 [[package]]
 name = "linked-hash-map"
@@ -1303,12 +1148,6 @@ name = "matches"
 version = "0.1.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a3e378b66a060d48947b590737b30a1be76706c8dd7b8ba0f2fe3989c68a853f"
-
-[[package]]
-name = "matchit"
-version = "0.4.4"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "58b6f41fdfbec185dd3dff58b51e323f5bc61692c0de38419a957b0dcfccca3c"
 
 [[package]]
 name = "memchr"
@@ -1569,15 +1408,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ff011a302c396a5197692431fc1948019154afc178baf7d8e37367442a4601cf"
 
 [[package]]
-name = "openssl-src"
-version = "111.17.0+1.1.1m"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "05d6a336abd10814198f66e2a91ccd7336611f30334119ca8ce300536666fcf4"
-dependencies = [
- "cc",
-]
-
-[[package]]
 name = "openssl-sys"
 version = "0.9.72"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1586,7 +1416,6 @@ dependencies = [
  "autocfg",
  "cc",
  "libc",
- "openssl-src",
  "pkg-config",
  "vcpkg",
 ]
@@ -2472,9 +2301,9 @@ checksum = "f67ad224767faa3c7d8b6d91985b78e70a1324408abcb1cfcc2be4c06bc06043"
 
 [[package]]
 name = "socket2"
-version = "0.4.3"
+version = "0.4.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "0f82496b90c36d70af5fcd482edaa2e0bd16fade569de1330405fecbbdac736b"
+checksum = "66d72b759436ae32898a2af0a14218dbf55efde3feeb170eb623637db85ee1e0"
 dependencies = [
  "libc",
  "winapi 0.3.9",
@@ -2554,12 +2383,6 @@ dependencies = [
  "quote",
  "unicode-xid",
 ]
-
-[[package]]
-name = "sync_wrapper"
-version = "0.1.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "20518fe4a4c9acf048008599e464deb21beeae3d3578418951a189c235a7a9a8"
 
 [[package]]
 name = "task-local-extensions"

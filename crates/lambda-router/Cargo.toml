@@ -1,0 +1,33 @@
+[package]
+name = "lambda-router"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+apollo-router = {git = "https://github.com/apollographql/router", branch = "main"}
+apollo-router-core = {git = "https://github.com/apollographql/router", branch = "main"}
+poem = "1.2.47"
+poem-lambda = "1.2.47"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "fmt", "json"] }
+serde = {version = "1.0", features = ["derive"]}
+serde_json = "1"
+tracing = "0.1"
+anyhow = "1.0"
+opentelemetry = "0.17.0"
+opentelemetry-otlp = "0.10.0"
+tokio = {version = "1.15.0", features = ["rt-multi-thread", "macros"]}
+url = { version = "2.2.2", features = ["serde"] }
+lambda_http = "0.4.1"
+bytes = "1.1.0"
+futures = "0.3.19"
+
+
+[patch.crates-io]
+opentelemetry = {git = "https://github.com/open-telemetry/opentelemetry-rust.git", rev = "6b3aa02aa"}
+opentelemetry-otlp = {git = "https://github.com/open-telemetry/opentelemetry-rust.git", rev = "6b3aa02aa"}
+
+
+
+[dev-dependencies]

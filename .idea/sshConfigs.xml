@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig authType="OPEN_SSH" connectionConfig="{&quot;hostKeyVerifier&quot;:{&quot;hashKnownHosts&quot;:true,&quot;stringHostKeyChecking&quot;:&quot;ASK&quot;},&quot;serverAliveInterval&quot;:50}" host="ec2-44-242-160-225.us-west-2.compute.amazonaws.com" id="e348a58a-1e75-4b8c-8a5a-c67ffaccec7b" port="22" customName="Ocrateris Ubuntu Arm" nameFormat="CUSTOM" username="ubuntu" useOpenSSHConfig="true">
+        <option name="customName" value="Ocrateris Ubuntu Arm" />
+      </sshConfig>
+    </configs>
+  </component>
+</project>

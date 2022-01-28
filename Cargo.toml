@@ -1,0 +1,8 @@
+[workspace]
+members = ["crates/lambda-router"]
+
+
+
+[patch.crates-io]
+opentelemetry = { git = "https://github.com/open-telemetry/opentelemetry-rust.git", rev = "6b3aa02aa" }
+opentelemetry-otlp = { git = "https://github.com/open-telemetry/opentelemetry-rust.git", rev = "6b3aa02aa" }
