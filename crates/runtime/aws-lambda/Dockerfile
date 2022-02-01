@@ -12,7 +12,9 @@ ARG BUILDPLATFORM
 RUN apt-get update && \
     apt-get install -y \
     build-essential \
-    libssl-dev
+    libssl-dev \
+    nodejs \
+    npm
 
 ARG USER
 ENV UID=10001
@@ -53,7 +55,7 @@ ARG TARGET
 WORKDIR ${LAMBDA_RUNTIME_DIR}
 
 COPY --from=builder "/app/target/$TARGET/release/$BINARY_NAME" .
-COPY --from=builder "/app/target/$TARGET/release/extension" /opt/extensions
+COPY --from=builder "/app/target/$TARGET/release/extension" /opt/extensions/
 
 
 CMD ["bootstrap"]

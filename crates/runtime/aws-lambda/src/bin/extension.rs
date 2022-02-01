@@ -17,8 +17,10 @@ async fn my_extension(event: LambdaEvent) -> Result<(), ExtensionError> {
         NextEvent::Shutdown(_e) => {
             // do something with the shutdown event
         }
-        NextEvent::Invoke(_e) => {
-            // do something with the invoke event
+        _ => {
+            // ignore any other event
+            // because we've registered the extension
+            // only to receive SHUTDOWN events
         }
     }
     Ok(())
@@ -47,7 +49,7 @@ fn init_tracing() {
     let env_filter = std::env::var("RUST_LOG")
         .ok()
         .unwrap_or(args.log_level.to_string());
-    let builder = tracing_subscriber::fmt::fmt()
+    tracing_subscriber::fmt::fmt()
         .with_env_filter(EnvFilter::try_new(&env_filter).expect("ould not get get env"))
         .init();
 
@@ -80,7 +82,6 @@ async fn init_remote_provider() -> S3Client {
 }
 
 async fn router_as_lambda_extension() -> Result<(), ExtensionError> {
-    let args: Args = Args::parse();
     let s3_client = init_remote_provider().await;
     let config = get_router_config(&s3_client).await;
     let schema = get_router_schema(&s3_client).await;
@@ -99,9 +100,9 @@ async fn router_as_lambda_extension() -> Result<(), ExtensionError> {
                 RouterState::Startup => {
                     tracing::info!(
                         r#"Starting Apollo Router
-*******************************************************************
-⚠️  Experimental software, not YET recommended for production use ⚠️
-*******************************************************************"#
+    *******************************************************************
+    ⚠️  Experimental software, not YET recommended for production use ⚠️
+    *******************************************************************"#
                     )
                 }
                 RouterState::Stopped => {
@@ -121,19 +122,21 @@ async fn router_as_lambda_extension() -> Result<(), ExtensionError> {
     if let Err(err) = server_handle.await {
         tracing::error!("{:?}", err);
         return Err(err.into());
-    }
+    };
 
-    let rt = Runtime::builder()
-        .with_events(&["SHUTDOWN"])
-        .register()
-        .await?;
+    Ok(())
 
-    let func = service_fn(my_extension);
-    lambda_extension::run(func).await
+    // let rt = Runtime::builder()
+    //     .with_events(&["SHUTDOWN"])
+    //     .register()
+    //     .await?;
+
+    // let func = service_fn(my_extension);
+    // lambda_extension::run(func).await
 }
 
 async fn router_as_local_server() -> Result<(), ExtensionError> {
-    let args: Args = Args::parse();
+    // let args: Args = Args::parse();
     let s3_client = init_remote_provider().await;
     let config = get_router_config(&s3_client).await;
     let schema = get_router_schema(&s3_client).await;
@@ -185,9 +188,10 @@ async fn main() -> Result<(), ExtensionError> {
 
     if aws_lambda::environment::is_lambda() {
         println!("Lambda Environment Detected");
-        router_as_lambda_extension().await
+        router_as_lambda_extension();
     } else {
         println!("Local Environment Detected");
-        router_as_local_server().await
+        router_as_local_server().await.unwrap();
     }
+    Ok(())
 }
