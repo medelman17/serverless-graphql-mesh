@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+zig clang -target aarch64-linux-gnu $@

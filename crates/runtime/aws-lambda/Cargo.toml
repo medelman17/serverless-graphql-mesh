@@ -1,0 +1,52 @@
+[package]
+name = "aws-lambda"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+#libs = {path = "../../libs"}
+lambda_http = { git = "https://github.com/awslabs/aws-lambda-rust-runtime", branch = "master", subfoler = "lambda-http" }
+lambda_extension = { git = "https://github.com/awslabs/aws-lambda-rust-runtime", branch = "master", subfoler = "lambda-extension" }
+tokio = {version = "1.16.1", features = ["full"]}
+serde = {version = "^1", features = ["derive"]}
+serde_json = "^1"
+serde_urlencoded = "0.7.1"
+tracing = "0.1.29"
+tracing-subscriber = {version = "0.3.1", features = ["fmt", "json", "env-filter"]}
+apollo-router = {git = "https://github.com/apollographql/router", branch = "main", subfolder = "apollo-router"}
+apollo-router-core = {git = "https://github.com/apollographql/router", branch = "main", subfolder = "apollo-router-core"}
+clap = { version = "3.0.13", features = ["derive", "clap_derive"] }
+bytes = "1.1.0"
+serde_bytes = "0.11.5"
+serde_yaml = "0.8.23"
+async-trait = "0.1.52"
+futures = { version = "0.3.19", features = ["thread-pool"] }
+aws-config = "0.6.0"
+aws-sdk-s3 = "0.6.0"
+openssl = { version = "0.10", features = ["vendored"] }
+
+
+[[bin]]
+name = "bootstrap"
+path = "src/bin/hello-world.rs"
+
+[[bin]]
+name = "extension"
+path = "src/bin/extension.rs"
+
+[patch.crates-io]
+opentelemetry = {git = "https://github.com/open-telemetry/opentelemetry-rust.git", rev = "6b3aa02aa"}
+opentelemetry-otlp = {git = "https://github.com/open-telemetry/opentelemetry-rust.git", rev = "6b3aa02aa"}
+
+[profile.release]
+codegen-units = 1
+incremental = false
+lto = "thin"
+opt-level = "z"
+panic = 'abort'
+
+[profile.dev]
+opt-level = 3
+

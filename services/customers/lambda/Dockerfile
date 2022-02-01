@@ -1,3 +1,9 @@
+ARG TARGETPLATFORM
+ARG BUILDPLATFORM
+ARG FUNCTION_DIR="."
+ARG BINARY_NAME="bootstrap"
+ARG USER=
+
 FROM --platform=$BUILDPLATFORM rust:latest as builder
 ARG TARGETPLATFORM
 ARG BUILDPLATFORM
@@ -52,8 +58,10 @@ ARG binary=bootstrap
 #COPY --from=builder /etc/passwd /etc/passwd
 #COPY --from=builder /etc/group /etc/group
 
-WORKDIR .
+WORKDIR ${LAMBDA_TASK_ROOT}
 
 COPY --from=builder "/app/target/$target/release/$binary" .
 
 USER $USER:$USER
+
+CMD ["./bootstrap"]
