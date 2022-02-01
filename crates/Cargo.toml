@@ -1,0 +1,20 @@
+
+[workspace]
+members = [
+    "runtime/aws-lambda",
+    "runtime/aws-fargate"
+]
+
+[patch.crates-io]
+opentelemetry = {git = "https://github.com/open-telemetry/opentelemetry-rust.git", rev = "6b3aa02aa"}
+opentelemetry-otlp = {git = "https://github.com/open-telemetry/opentelemetry-rust.git", rev = "6b3aa02aa"}
+
+[profile.release]
+codegen-units = 1
+incremental = false
+lto = "thin"
+opt-level = "z"
+panic = 'abort'
+
+[profile.dev]
+opt-level = 3
